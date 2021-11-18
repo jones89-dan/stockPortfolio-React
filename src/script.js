@@ -2,7 +2,7 @@ class Portfolio extends React.Component {
   constructor(props) {
     super(props);
   }
-
+//Render method
   render() {
     return (
       <div className="container">
