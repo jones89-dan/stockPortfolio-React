@@ -25,6 +25,8 @@ class Portfolio extends React.Component {
 }
 //Render method
   render() {
+    const { portfolio } = this.state;
+    
     return (
       <div className="container">
         <h1 className="text-center my-4">Stock Portfolio</h1>

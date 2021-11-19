@@ -40,6 +40,9 @@ var Portfolio = function (_React$Component) {
   _createClass(Portfolio, [{
     key: 'render',
     value: function render() {
+      var portfolio = this.state.portfolio;
+
+
       return React.createElement(
         'div',
         { className: 'container' },
