@@ -1,6 +1,27 @@
 class Portfolio extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      portfolio: [
+        {
+          name: 'Feetbook',
+          shares_owned: 20,
+          cost_per_share: 50,
+          market_price: 130
+        },{
+          name: 'Yamazon',
+          shares_owned: 5,
+          cost_per_share: 200,
+          market_price: 500
+        },{
+          name: 'Snoozechat',
+          shares_owned: 100,
+          cost_per_share: 20,
+          market_price: 3
+        }
+      ]
+    };
   }
 //Render method
   render() {
