@@ -22,7 +22,7 @@ class Portfolio extends React.Component {
         }
       ]
     };
-  }
+}
 //Render method
   render() {
     return (
@@ -43,6 +43,25 @@ class Portfolio extends React.Component {
                 </tr>
               </thead>
               <tbody>
+              {portfolio.map((stock, index) => {
+                const {
+                  name,
+                  shares_owned,
+                  cost_per_share,
+                  market_price,
+                } = stock;
+                return (
+                  <tr key={index}>
+                    <td>{name}</td>
+                    <td><input type="number" name="shares_owned" value={shares_owned} /></td>
+                    <td><input type="number" name="cost_per_share" value={cost_per_share} /></td>
+                    <td><input type="number" name="market_price" value={market_price} /></td>
+                    <td></td>
+                    <td></td>
+                    <td><button className="btn btn-light btn-sm">remove</button></td>
+                  </tr>
+                )
+              })}
               </tbody>
             </table>
           </div>
