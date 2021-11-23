@@ -32,16 +32,36 @@ var Portfolio = function (_React$Component) {
         market_price: 3
       }]
     };
+
+    _this.removeStock = _this.removeStock.bind(_this);
     return _this;
   }
-  //Render method
-
 
   _createClass(Portfolio, [{
+    key: 'removeStock',
+    value: function removeStock(index) {
+      var portfolio = this.state.portfolio.slice(); // shallow copy
+      portfolio.splice(index, 1); // remove value at index
+      this.setState({ portfolio: portfolio });
+    }
+
+    //Render method
+
+  }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var portfolio = this.state.portfolio;
 
+
+      var portfolio_market_value = portfolio.reduce(function (sum, stock) {
+        return stock.shares_owned * stock.market_price + sum;
+      }, 0);
+      var portfolio_cost = portfolio.reduce(function (sum, stock) {
+        return stock.shares_owned * stock.cost_per_share + sum;
+      }, 0);
+      var portfolio_gain_loss = portfolio_market_value - portfolio_cost;
 
       return React.createElement(
         'div',
@@ -151,13 +171,35 @@ var Portfolio = function (_React$Component) {
                       null,
                       React.createElement(
                         'button',
-                        { className: 'btn btn-light btn-sm' },
+                        { className: 'btn btn-light btn-sm', onClick: function onClick() {
+                            return _this2.removeStock(index);
+                          } },
                         'remove'
                       )
                     )
                   );
                 })
               )
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'col-12 col-md-6' },
+            React.createElement(
+              'h4',
+              { className: 'mb-3' },
+              'Portfolio value: $ ',
+              portfolio_market_value
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'col-12 col-md-6' },
+            React.createElement(
+              'h4',
+              { className: 'mb-3' },
+              'Portfolio gain/loss: $ ',
+              portfolio_gain_loss
             )
           )
         )
